@@ -124,7 +124,7 @@ class GraylogTest extends AbstractTest
 
         // Check if we filter out the username
         $request->request->set('username', 'henk');
-
+        $request->request->set('user', array('password'=>'henk'));
         Graylog::log('error', 'test', []);
     }
 

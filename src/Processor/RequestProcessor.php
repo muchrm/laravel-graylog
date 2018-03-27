@@ -39,7 +39,7 @@ class RequestProcessor implements ProcessorInterface
             
             $filteredParameters = array_filter(
                 $request->request->all(),
-                $this->doFilter,
+                array($this,'doFilter'),
                 ARRAY_FILTER_USE_BOTH
             );
 
@@ -52,7 +52,8 @@ class RequestProcessor implements ProcessorInterface
                 ->setAdditional('request_ip', $request->ip());
     }
 
-    function doFilter($key,$vals){
+    private function doFilter($vals,$key){
+        $disallowedParameters = config('graylog.disallowed_post_parameters', []);
         $output = true;
         if (is_array($vals)){
             foreach ($vals as $key=>$val){

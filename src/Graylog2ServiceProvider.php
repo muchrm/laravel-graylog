@@ -1,6 +1,6 @@
 <?php
 
-namespace Swis\Graylog2;
+namespace Muchrm\Graylog2;
 
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\ServiceProvider;

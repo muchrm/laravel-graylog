@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Config;
-use Swis\Graylog2\Facades\Graylog2;
+use Muchrm\Graylog2\Facades\Graylog2;
 
 include __DIR__.'/TestGraylog2Transport.php';
 
@@ -47,7 +47,7 @@ class Graylog2Test extends AbstractTest
     public function testException()
     {
         // Set additional fields
-        Graylog2::registerProcessor(new \Swis\Graylog2\Processor\ExceptionProcessor());
+        Graylog2::registerProcessor(new \Muchrm\Graylog2\Processor\ExceptionProcessor());
 
         $e = new \Exception('test Exception', 300);
 
@@ -66,7 +66,7 @@ class Graylog2Test extends AbstractTest
     public function testRequest()
     {
         // Set additional fields
-        Graylog2::registerProcessor(new \Swis\Graylog2\Processor\RequestProcessor());
+        Graylog2::registerProcessor(new \Muchrm\Graylog2\Processor\RequestProcessor());
 
         $self = $this;
         $testTransport = new TestGraylog2Transport(function (\Gelf\MessageInterface $message) use ($self) {
@@ -102,7 +102,7 @@ class Graylog2Test extends AbstractTest
 
     public function testRequestProcessorParameters()
     {
-        Graylog2::registerProcessor(new \Swis\Graylog2\Processor\RequestProcessor());
+        Graylog2::registerProcessor(new \Muchrm\Graylog2\Processor\RequestProcessor());
 
         $self = $this;
         $testTransport = new TestGraylog2Transport(function (\Gelf\MessageInterface $message) use ($self) {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Swis\Graylog2;
+namespace Muchrm\Graylog2;
 
 use Gelf\Message;
 use Gelf\Publisher;
@@ -8,7 +8,7 @@ use Gelf\Transport\TcpTransport;
 use Gelf\Transport\TransportInterface;
 use Gelf\Transport\UdpTransport;
 use Psr\Log\AbstractLogger;
-use Swis\Graylog2\Processor\ProcessorInterface;
+use Muchrm\Graylog2\Processor\ProcessorInterface;
 
 class Graylog2 extends AbstractLogger
 {

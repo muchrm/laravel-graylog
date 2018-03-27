@@ -1,6 +1,6 @@
 <?php
 
-use Swis\Graylog2\Graylog2Handler;
+use Muchrm\Graylog2\Graylog2Handler;
 
 class HandlerTest extends AbstractTest
 {

@@ -1,5 +1,5 @@
 {
-  "name": "swisnl/laravel-graylog2",
+  "name": "muchrm/laravel-graylog2",
   "description": "Log your Laravel application errors to Graylog2",
   "keywords": ["laravel", "graylog", "logging"],
   "type": "library",
@@ -10,11 +10,16 @@
       "email": "welfring@swis.nl",
       "homepage": "https://www.swis.nl/over-ons/wesley-elfring",
       "role": "Developer"
+    },
+    {
+      "name": "Pongpanot Chuaysakun",
+      "email": "muchrm.me@gmail.com",
+      "role": "Developer"
     }
   ],
   "autoload": {
     "psr-4": {
-      "Swis\\Graylog2\\": "src"
+      "Muchrm\\Graylog2\\": "src"
     }
   },
   "require": {
@@ -43,7 +48,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Swis\\Graylog2\\Graylog2ServiceProvider"
+        "Muchrm\\Graylog2\\Graylog2ServiceProvider"
       ]
     }
   }

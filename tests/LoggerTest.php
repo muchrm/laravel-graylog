@@ -8,7 +8,7 @@ class LoggerTest extends AbstractTest
      */
     public function testSimplePreparation()
     {
-        $logger = new \Swis\Graylog2\Logger();
+        $logger = new \Muchrm\Graylog2\Logger();
 
         $message = $logger->prepareLog('emergency', 'Test Message', ['a' => true])->toArray();
 

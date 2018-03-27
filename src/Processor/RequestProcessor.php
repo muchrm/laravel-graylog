@@ -1,6 +1,6 @@
 <?php
 
-namespace Swis\Graylog2\Processor;
+namespace Muchrm\Graylog2\Processor;
 
 use Illuminate\Http\Request;
 

@@ -16,6 +16,6 @@ abstract class AbstractTest extends Orchestra\Testbench\TestCase
 
     protected function getPackageProviders($app)
     {
-        return ['Swis\Graylog2\Graylog2ServiceProvider'];
+        return ['Muchrm\Graylog2\Graylog2ServiceProvider'];
     }
 }

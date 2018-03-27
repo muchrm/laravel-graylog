@@ -29,7 +29,7 @@ return [
         'port' => '12201',
 
         /*
-         * Choose between UDP and TCP transport. 
+         * Choose between UDP and TCP transport.
          * UDP transports won't throw exceptions on transport errors,
          * but message reception by the Graylog server is not guaranteed.
          */

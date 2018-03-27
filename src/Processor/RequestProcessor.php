@@ -36,13 +36,11 @@ class RequestProcessor implements ProcessorInterface
 
         // Add filtered POST data if configured
         if (config('graylog.log_request_post_data', false)) {
-            $disallowedParameters = config('graylog.disallowed_post_parameters', []);
+            
             $filteredParameters = array_filter(
                 $request->request->all(),
-                function ($key) use ($disallowedParameters) {
-                    return !in_array($key, $disallowedParameters);
-                },
-                ARRAY_FILTER_USE_KEY
+                $this->doFilter,
+                ARRAY_FILTER_USE_BOTH
             );
 
             $message->setAdditional('request_post_data', json_encode($filteredParameters));
@@ -52,5 +50,27 @@ class RequestProcessor implements ProcessorInterface
                 ->setAdditional('request_url', $request->url())
                 ->setAdditional('request_method', $request->method())
                 ->setAdditional('request_ip', $request->ip());
+    }
+
+    function doFilter($key,$val){
+        $output = true;
+        if (is_array($arrayIn)){
+            foreach ($arrayIn as $key=>$val){
+                if (is_array($val)){
+                    if(!$this->doFilter($val)){
+                        $output  = false;
+                    }
+                } else {
+                    if(in_array($key, $disallowedParameters)){
+                        $output  = false;
+                    }
+                }
+            }
+        } else {
+            if(in_array($key, $disallowedParameters)){
+                $output  = false;
+            }
+        }
+        return $output;
     }
 }

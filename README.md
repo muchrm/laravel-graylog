@@ -3,7 +3,8 @@ This is forcked version of [swisnl/laravel-graylog2](https://github.com/swisnl/l
 i'm using it on my project 
 Don't use me yet.
 # Graylog Logging for Laravel 5.x
-[![License](https://poser.pugx.org/muchrm/textsnippet/license)](https://packagist.org/packages/muchrm/laravel-graylog) [![Build Status](https://travis-ci.org/muchrm/laravel-graylog.svg?branch=master)](https://travis-ci.org/muchrm/laravel-graylog)
+[![Latest Stable Version](https://poser.pugx.org/muchrm/laravel-graylog/v/stable)](https://packagist.org/packages/muchrm/laravel-graylog)
+[![Build Status](https://travis-ci.org/muchrm/laravel-graylog.svg?branch=master)](https://travis-ci.org/muchrm/laravel-graylog)
 
 ## Installation
 

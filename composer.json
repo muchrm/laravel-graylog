@@ -24,7 +24,7 @@
   },
   "require": {
     "php": ">=5.6.0",
-    "graylog/gelf-php": "^1.5",
+    "graylog2/gelf-php": "^1.5",
     "illuminate/http": "5.*",
     "illuminate/support": "5.*",
     "monolog/monolog": "^1.20"

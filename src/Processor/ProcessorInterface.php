@@ -1,6 +1,6 @@
 <?php
 
-namespace Muchrm\Graylog2\Processor;
+namespace Muchrm\Graylog\Processor;
 
 use Gelf\Message;
 

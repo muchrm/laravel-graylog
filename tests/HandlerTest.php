@@ -1,19 +1,19 @@
 <?php
 
-use Muchrm\Graylog2\Graylog2Handler;
+use Muchrm\Graylog\GraylogHandler;
 
 class HandlerTest extends AbstractTest
 {
     /**
      * Test enabling and disabling of
-     * Graylog2 error reporting.
+     * Graylog error reporting.
      */
     public function testEnabling()
     {
-        $handler = new Graylog2Handler();
+        $handler = new GraylogHandler();
         $this->assertFalse($handler->handle([]));
 
-        $this->app['config']->set('graylog2.enabled', false);
+        $this->app['config']->set('graylog.enabled', false);
         $this->assertFalse($handler->handle([]));
     }
 }

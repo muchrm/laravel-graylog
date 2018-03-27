@@ -1,6 +1,6 @@
 <?php
 
-namespace Muchrm\Graylog2\Processor;
+namespace Muchrm\Graylog\Processor;
 
 class ExceptionProcessor implements ProcessorInterface
 {
@@ -24,7 +24,7 @@ class ExceptionProcessor implements ProcessorInterface
         $message->setFile($exception->getFile());
 
         // Check if we want the full stack trace in the message
-        if (!config('graylog2.stack_trace_in_full_message', false)) {
+        if (!config('graylog.stack_trace_in_full_message', false)) {
             return $message;
         }
 

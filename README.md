@@ -2,14 +2,14 @@
 This is forcked version of [swisnl/laravel-graylog2](https://github.com/swisnl/laravel-graylog2)
 i'm using it on my project 
 Don't use me yet.
-# Graylog2 Logging for Laravel 5.x
-[![License](https://poser.pugx.org/swisnl/textsnippet/license)](https://packagist.org/packages/swisnl/laravel-graylog) [![Build Status](https://travis-ci.org/swisnl/laravel-graylog2.svg?branch=master)](https://travis-ci.org/swisnl/laravel-graylog2)
+# Graylog Logging for Laravel 5.x
+[![License](https://poser.pugx.org/muchrm/textsnippet/license)](https://packagist.org/packages/muchrm/laravel-graylog) [![Build Status](https://travis-ci.org/muchrm/laravel-graylog.svg?branch=master)](https://travis-ci.org/muchrm/laravel-graylog)
 
 ## Installation
 
-1. Run composer require for this package: `composer require swisnl/laravel-graylog2`
-2. Add the service provider to app.php if you don't like auto discovery: `Swis\Graylog2\Graylog2ServiceProvider`
-3. Run `php artisan vendor:publish` to publish the config file to ./config/graylog2.php.
+1. Run composer require for this package: `composer require muchrm/laravel-graylog`
+2. Add the service provider to app.php if you don't like auto discovery: `Muchrm\Graylog\GraylogServiceProvider`
+3. Run `php artisan vendor:publish` to publish the config file to ./config/graylog.php.
 4. Configure it to your liking
 5. Done!
 
@@ -22,9 +22,9 @@ Processors add extra functionality to the handler. You can register processors b
 public function register()
 {
     //...
-    Graylog2::registerProcessor(new \Swis\Graylog2\Processor\ExceptionProcessor());
-    Graylog2::registerProcessor(new \Swis\Graylog2\Processor\RequestProcessor());
-    Graylog2::registerProcessor(new MyCustomProcessor());
+    Graylog::registerProcessor(new \Muchrm\Graylog\Processor\ExceptionProcessor());
+    Graylog::registerProcessor(new \Muchrm\Graylog\Processor\RequestProcessor());
+    Graylog::registerProcessor(new MyCustomProcessor());
     //...
 }
 ```
@@ -40,7 +40,7 @@ Adds exception data to the message if there is any.
 Adds the current Laravel Request to the message. It adds the url, method and ip by default.
 
 ## Custom processors
-You can define a custom processor by implementing `Swis\Graylog2\Processor\ProcessorInterface`. The result should look something like this:
+You can define a custom processor by implementing `Muchrm\Graylog\Processor\ProcessorInterface`. The result should look something like this:
 
 ```php
 <?php
@@ -48,7 +48,7 @@ You can define a custom processor by implementing `Swis\Graylog2\Processor\Proce
 namespace App\Processors;
 
 use Auth;
-use Swis\Graylog2\Processor\ProcessorInterface;
+use Muchrm\Graylog\Processor\ProcessorInterface;
 
 class MyCustomProcessor implements ProcessorInterface
 {
@@ -70,11 +70,11 @@ class MyCustomProcessor implements ProcessorInterface
 In `app/Exceptions/Handler.php` you can define the $dontReport array with Exception classes that won't be reported to the logger. For example, you can blacklist the \Illuminate\Database\Eloquent\ModelNotFoundException. Check the [Laravel Documentation](https://laravel.com/docs/master/errors#the-exception-handler) about errors for more information.
 
 ## Logging arbitrary data
-You can instantiate the Graylog2 class to send additional GELF messages:
+You can instantiate the Graylog class to send additional GELF messages:
 
 ```php
 // Send default log message
-Graylog2::log('emergency', 'Dear Sir/Madam, Fire! Fire! Help me!. 123 Cavendon Road. Looking forward to hearing from you. Yours truly, Maurice Moss.', ['facility' => 'ICT']);
+Graylog::log('emergency', 'Dear Sir/Madam, Fire! Fire! Help me!. 123 Cavendon Road. Looking forward to hearing from you. Yours truly, Maurice Moss.', ['facility' => 'ICT']);
 
 // Send custom GELF Message
 $message = new \Gelf\Message();
@@ -83,10 +83,10 @@ $message->setShortMessage('Fire! Fire! Help me!');
 $message->setFullMessage('Dear Sir/Madam, Fire! Fire! Help me!. 123 Cavendon Road. Looking forward to hearing from you. Yours truly, Maurice Moss.');
 $message->setFacility('ICT');
 $message->setAdditional('employee', 'Maurice Moss');
-Graylog2::logMessage($message);
+Graylog::logMessage($message);
 ```
 
 ## Troubleshooting
 
-### Long messages (or exceptions) won't show up in Graylog2
+### Long messages (or exceptions) won't show up in Graylog
 You might need to increase the size of the UDP chunks in the UDP Transport (see the config file). Otherwise, you can send packets in TCP mode.

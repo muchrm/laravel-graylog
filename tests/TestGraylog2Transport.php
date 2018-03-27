@@ -1,6 +1,6 @@
 <?php
 
-class TestGraylog2Transport implements \Gelf\Transport\TransportInterface
+class TestGraylogTransport implements \Gelf\Transport\TransportInterface
 {
     private $callback;
 

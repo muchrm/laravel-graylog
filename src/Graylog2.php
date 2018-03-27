@@ -1,6 +1,6 @@
 <?php
 
-namespace Muchrm\Graylog2;
+namespace Muchrm\Graylog;
 
 use Gelf\Message;
 use Gelf\Publisher;
@@ -8,9 +8,9 @@ use Gelf\Transport\TcpTransport;
 use Gelf\Transport\TransportInterface;
 use Gelf\Transport\UdpTransport;
 use Psr\Log\AbstractLogger;
-use Muchrm\Graylog2\Processor\ProcessorInterface;
+use Muchrm\Graylog\Processor\ProcessorInterface;
 
-class Graylog2 extends AbstractLogger
+class Graylog extends AbstractLogger
 {
     /** @var Logger */
     protected $logger;
@@ -122,16 +122,16 @@ class Graylog2 extends AbstractLogger
     private function setupGraylogTransport()
     {
         // Setup the transport
-        if ('UDP' === strtoupper(config('graylog2.connection.type'))) {
+        if ('UDP' === strtoupper(config('graylog.connection.type'))) {
             $transport = new UdpTransport(
-                config('graylog2.connection.host'),
-                config('graylog2.connection.port'),
-                config('graylog2.connection.chunk_size')
+                config('graylog.connection.host'),
+                config('graylog.connection.port'),
+                config('graylog.connection.chunk_size')
             );
-        } elseif ('TCP' === strtoupper(config('graylog2.connection.type'))) {
+        } elseif ('TCP' === strtoupper(config('graylog.connection.type'))) {
             $transport = new TcpTransport(
-                config('graylog2.connection.host'),
-                config('graylog2.connection.port')
+                config('graylog.connection.host'),
+                config('graylog.connection.port')
             );
         } else {
             throw new \DomainException('Invalid Graylog Transport, should be set to TCP or UDP.');

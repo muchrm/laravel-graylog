@@ -1,6 +1,6 @@
 <?php
 
-namespace Muchrm\Graylog2;
+namespace Muchrm\Graylog;
 
 use Gelf\Logger as GelfLogger;
 use Gelf\Message;

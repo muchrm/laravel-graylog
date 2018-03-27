@@ -1,6 +1,6 @@
 {
-  "name": "muchrm/laravel-graylog2",
-  "description": "Log your Laravel application errors to Graylog2",
+  "name": "muchrm/laravel-graylog",
+  "description": "Log your Laravel application errors to Graylog",
   "keywords": ["laravel", "graylog", "logging"],
   "type": "library",
   "license": "MIT",
@@ -19,12 +19,12 @@
   ],
   "autoload": {
     "psr-4": {
-      "Muchrm\\Graylog2\\": "src"
+      "Muchrm\\Graylog\\": "src"
     }
   },
   "require": {
     "php": ">=5.6.0",
-    "graylog2/gelf-php": "^1.5",
+    "graylog/gelf-php": "^1.5",
     "illuminate/http": "5.*",
     "illuminate/support": "5.*",
     "monolog/monolog": "^1.20"
@@ -48,7 +48,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Muchrm\\Graylog2\\Graylog2ServiceProvider"
+        "Muchrm\\Graylog\\GraylogServiceProvider"
       ]
     }
   }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Muchrm\Graylog2\Processor;
+namespace Muchrm\Graylog\Processor;
 
 use Illuminate\Http\Request;
 
@@ -18,7 +18,7 @@ class RequestProcessor implements ProcessorInterface
     public function process($message, $exception, $context)
     {
         // Don't process when the setting is off
-        if (!config('graylog2.log_requests', false)) {
+        if (!config('graylog.log_requests', false)) {
             return $message;
         }
 
@@ -30,13 +30,13 @@ class RequestProcessor implements ProcessorInterface
         }
 
         // Add GET data if configured
-        if (config('graylog2.log_request_get_data', false)) {
+        if (config('graylog.log_request_get_data', false)) {
             $message->setAdditional('request_get_data', json_encode($request->query()));
         }
 
         // Add filtered POST data if configured
-        if (config('graylog2.log_request_post_data', false)) {
-            $disallowedParameters = config('graylog2.disallowed_post_parameters', []);
+        if (config('graylog.log_request_post_data', false)) {
+            $disallowedParameters = config('graylog.disallowed_post_parameters', []);
             $filteredParameters = array_filter(
                 $request->request->all(),
                 function ($key) use ($disallowedParameters) {

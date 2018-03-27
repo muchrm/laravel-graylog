@@ -1,13 +1,13 @@
 <?php
 
-namespace Muchrm\Graylog2\Facades;
+namespace Muchrm\Graylog\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class Graylog2 extends Facade
+class Graylog extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'graylog2';
+        return 'graylog';
     }
 }

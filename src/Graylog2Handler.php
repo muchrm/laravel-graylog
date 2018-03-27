@@ -1,28 +1,28 @@
 <?php
 
-namespace Muchrm\Graylog2;
+namespace Muchrm\Graylog;
 
 use Illuminate\Support\Facades\Log;
 use Monolog\Handler\AbstractHandler;
 
-class Graylog2Handler extends AbstractHandler
+class GraylogHandler extends AbstractHandler
 {
     /**
      * {@inheritdoc}
      */
     public function handle(array $record)
     {
-        // Check if we should send the message to Graylog2
-        if (!config('graylog2.enabled')) {
+        // Check if we should send the message to Graylog
+        if (!config('graylog.enabled')) {
             return false;
         }
 
         // Handle a log from Laravel
-        /** @var Graylog2 $graylog2 */
-        $graylog2 = app('graylog2');
+        /** @var Graylog $graylog */
+        $graylog = app('graylog');
 
         try {
-            $graylog2->log(
+            $graylog->log(
                 strtolower($record['level_name']),
                 $record['message'],
                 $record['context']

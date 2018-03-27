@@ -1,11 +1,11 @@
 <?php
 
-namespace Muchrm\Graylog2;
+namespace Muchrm\Graylog;
 
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\ServiceProvider;
 
-class Graylog2ServiceProvider extends ServiceProvider
+class GraylogServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application events.
@@ -14,7 +14,7 @@ class Graylog2ServiceProvider extends ServiceProvider
     {
         // Publish configuration file
         $this->publishes([
-            __DIR__.'/../config/graylog2.php' => $this->app->configPath().'/graylog2.php',
+            __DIR__.'/../config/graylog.php' => $this->app->configPath().'/graylog.php',
         ]);
     }
 
@@ -23,11 +23,11 @@ class Graylog2ServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('graylog2', Graylog2::class);
+        $this->app->singleton('graylog', Graylog::class);
 
         // Register handler
         $monoLog = Log::getMonolog();
-        $monoLog->pushHandler(new Graylog2Handler());
+        $monoLog->pushHandler(new GraylogHandler());
     }
 
     /**
@@ -37,6 +37,6 @@ class Graylog2ServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return ['graylog2'];
+        return ['graylog'];
     }
 }

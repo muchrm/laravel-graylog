@@ -10,12 +10,12 @@ abstract class AbstractTest extends Orchestra\Testbench\TestCase
     protected function getEnvironmentSetUp($app)
     {
         // Import default settings
-        $defaultGraylog2Settings = require __DIR__.'/../config/graylog2.php';
-        $app['config']->set('graylog2', $defaultGraylog2Settings);
+        $defaultGraylogSettings = require __DIR__.'/../config/graylog.php';
+        $app['config']->set('graylog', $defaultGraylogSettings);
     }
 
     protected function getPackageProviders($app)
     {
-        return ['Muchrm\Graylog2\Graylog2ServiceProvider'];
+        return ['Muchrm\Graylog\GraylogServiceProvider'];
     }
 }

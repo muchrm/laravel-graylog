@@ -52,12 +52,12 @@ class RequestProcessor implements ProcessorInterface
                 ->setAdditional('request_ip', $request->ip());
     }
 
-    function doFilter($key,$val){
+    function doFilter($key,$vals){
         $output = true;
-        if (is_array($arrayIn)){
-            foreach ($arrayIn as $key=>$val){
+        if (is_array($vals)){
+            foreach ($vals as $key=>$val){
                 if (is_array($val)){
-                    if(!$this->doFilter($val)){
+                    if(!$this->doFilter($key,$val)){
                         $output  = false;
                     }
                 } else {

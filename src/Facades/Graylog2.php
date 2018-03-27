@@ -1,6 +1,6 @@
 <?php
 
-namespace Swis\Graylog2\Facades;
+namespace Muchrm\Graylog2\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
